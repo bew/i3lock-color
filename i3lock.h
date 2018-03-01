@@ -1,6 +1,8 @@
 #ifndef _I3LOCK_H
 #define _I3LOCK_H
 
+#include <stdbool.h>
+
 // boy i sure hope this doesnt change in the future
 #define NANOSECONDS_IN_SECOND 1000000000
 
@@ -85,6 +87,7 @@ typedef struct {
     enum e_widget_alignment align;
     char color[9];
     char font[32];
+    bool show;
 
     union {
         t_indicator_description indicator;

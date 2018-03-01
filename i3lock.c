@@ -242,6 +242,123 @@ void u8_dec(char *s, int *i) {
     (void)(isutf(s[--(*i)]) || isutf(s[--(*i)]) || isutf(s[--(*i)]) || --(*i));
 }
 
+// default values for widgets descriptions
+t_widget_description indicator_widget_desc = {
+    // Indicator
+    .type = WIDGET_TYPE_INDICATOR,
+    .x_expr = "x + (w / 2)",
+    .y_expr = "y + (h / 2)",
+    .indicator = {
+        .radius = 90.0,
+        .ring_width = 7.0,
+        .ring_normal_color = "337d00ff",
+        .ring_verify_color = "3300faff",
+        .ring_wrong_color = "7d3300ff",
+        .inside_normal_color = "000000bf",
+        .inside_verify_color = "006effbf",
+        .inside_wrong_color = "fa0000bf",
+        .ring_hl_onkey_color = "33db00ff",
+        .ring_hl_onbackspace_color = "db3300ff",
+        .ring_hl_separator_color = "000000ff",
+        .line_color = "000000ff",
+        .line_use_color = LINE_USE_OWN_COLOR,
+    },
+    .show = true,
+};
+
+t_widget_description time_widget_desc = {
+    // Time
+    .type = WIDGET_TYPE_TEXT,
+    .x_expr = "ix",
+    .y_expr = "iy",
+    .align = TEXT_ALIGN_CENTER,
+    .size = 32.0,
+    .color = "000000ff",
+    .font = "sans-serif",
+    .text = {
+        .provider = TEXT_PROVIDER_BUILTIN,
+        .builtin = {
+            .type = TEXT_BUILTIN_DATETIME,
+            .format = "%H:%M:%S"
+        },
+    },
+    .show = false,
+};
+
+t_widget_description date_widget_desc = {
+    // Date
+    .type = WIDGET_TYPE_TEXT,
+    .x_expr = "tx",
+    .y_expr = "ty + 30",
+    .align = TEXT_ALIGN_CENTER,
+    .size = 14.0,
+    .color = "000000ff",
+    .font = "sans-serif",
+    .text = {
+        .provider = TEXT_PROVIDER_BUILTIN,
+        .builtin = {
+            .type = TEXT_BUILTIN_DATETIME,
+            .format = "%A, %m %Y"
+        },
+    },
+    .show = false,
+};
+
+t_widget_description layout_widget_desc = {
+    // Layout
+    .type = WIDGET_TYPE_TEXT,
+    .x_expr = "dx",
+    .y_expr = "dy + 30",
+    .align = TEXT_ALIGN_CENTER,
+    .size = 14.0,
+    .color = "000000ff",
+    .font = "sans-serif",
+    .text = {
+        .provider = TEXT_PROVIDER_BUILTIN,
+        .builtin = {
+            .type = TEXT_BUILTIN_LAYOUT,
+            .format = "%L (%K)"
+        },
+    },
+    .show = false,
+};
+
+t_widget_description status_widget_desc = {
+    // Status
+    .type = WIDGET_TYPE_TEXT,
+    .x_expr = "ix",
+    .y_expr = "iy",
+    .align = TEXT_ALIGN_CENTER,
+    .size = 42.0, // not specified in old config
+    .color = "000000ff", // not specified in old config
+    .font = "sans-serif",
+    .text = {
+        .provider = TEXT_PROVIDER_BUILTIN,
+        .builtin = {
+            .type = TEXT_BUILTIN_STATUS,
+            .format = "%s"
+        },
+    },
+    .show = true,
+};
+
+t_widget_description modifier_widget_desc = {
+    // Modifier
+    .type = WIDGET_TYPE_TEXT,
+    .x_expr = "ix",
+    .y_expr = "iy + 28",
+    .align = TEXT_ALIGN_CENTER,
+    .size = 14.0,
+    .color = "000000ff", // not specified in old config
+    .font = "sans-serif",
+    .text = {
+        .provider = TEXT_PROVIDER_BUILTIN,
+        .builtin = { .type = TEXT_BUILTIN_MODIFIER },
+    },
+    .show = false,
+};
+
+
 /*
  * fetches the keylayout name
  *      -1 (do not)
