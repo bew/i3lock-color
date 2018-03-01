@@ -1230,6 +1230,9 @@ int main(int argc, char *argv[]) {
                 blur = true;
                 blur_sigma = atoi(optarg);
                 break;
+            case 'f':
+                show_failed_attempts = true;
+                break;
             case 0:
                 if (strcmp(longopts[longoptind].name, "debug") == 0)
                     debug_mode = true;
@@ -1274,7 +1277,7 @@ int main(int argc, char *argv[]) {
                         arg++;
 
                     if (strlen(arg) != 8 || sscanf(arg, "%08[0-9a-fA-F]", ringvercolor) != 1)
-                        errx(1, "ringvercolor is invalid, color must be given in 4-byte format: rrggbb\n");
+                        errx(1, "ringvercolor is invalid, color must be given in 4-byte format: rrggbbaa\n");
                 }
                 else if (strcmp(longopts[longoptind].name, "ringwrongcolor") == 0) {
                     char *arg = optarg;
@@ -1284,7 +1287,7 @@ int main(int argc, char *argv[]) {
                         arg++;
 
                     if (strlen(arg) != 8 || sscanf(arg, "%08[0-9a-fA-F]", ringwrongcolor) != 1)
-                        errx(1, "ringwrongcolor is invalid, color must be given in 4-byte format: rrggbb\n");
+                        errx(1, "ringwrongcolor is invalid, color must be given in 4-byte format: rrggbbaa\n");
                 }
                 else if (strcmp(longopts[longoptind].name, "ringcolor") == 0) {
                     char *arg = optarg;
@@ -1294,7 +1297,7 @@ int main(int argc, char *argv[]) {
                         arg++;
 
                     if (strlen(arg) != 8 || sscanf(arg, "%08[0-9a-fA-F]", ringcolor) != 1)
-                        errx(1, "ringcolor is invalid, color must be given in 4-byte format: rrggbb\n");
+                        errx(1, "ringcolor is invalid, color must be given in 4-byte format: rrggbbaa\n");
                 }
                 else if (strcmp(longopts[longoptind].name, "linecolor") == 0) {
                     char *arg = optarg;
@@ -1304,7 +1307,7 @@ int main(int argc, char *argv[]) {
                         arg++;
 
                     if (strlen(arg) != 8 || sscanf(arg, "%08[0-9a-fA-F]", linecolor) != 1)
-                        errx(1, "linecolor is invalid, color must be given in 4-byte format: rrggbb\n");
+                        errx(1, "linecolor is invalid, color must be given in 4-byte format: rrggbbaa\n");
                 }
                 else if (strcmp(longopts[longoptind].name, "verifcolor") == 0) {
                     char *arg = optarg;
@@ -1706,9 +1709,6 @@ int main(int argc, char *argv[]) {
                     redraw_thread = true;
                 }
 
-                break;
-            case 'f':
-                show_failed_attempts = true;
                 break;
             default:
                 errx(EXIT_FAILURE, "Syntax: i3lock [-v] [-n] [-b] [-d] [-c color] [-u] [-p win|default]"
