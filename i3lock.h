@@ -50,6 +50,15 @@ enum e_builtin_type
   TEXT_BUILTIN_MODIFIER,
 };
 
+enum e_status_desc_types
+{
+  STATUS_VERIFY,
+  STATUS_WRONG,
+  STATUS_NOINPUT,
+};
+
+// Widget description
+
 typedef struct {
     double radius;
     double ring_width;
@@ -94,5 +103,14 @@ typedef struct {
         t_text_description text;
     };
 } t_widget_description;
+
+
+// Status description
+
+struct t_status_description
+{
+    char *text;
+    char *color;
+};
 
 #endif

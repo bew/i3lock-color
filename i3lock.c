@@ -358,6 +358,21 @@ t_widget_description modifier_widget_desc = {
     .show = false,
 };
 
+t_status_description status_descs[] = {
+    [STATUS_VERIFY] = {
+        .text = "verifying…",
+        .color = "000000ff",
+    },
+    [STATUS_WRONG] = {
+        .text = "wrong!",
+        .color = "000000ff",
+    },
+    [STATUS_NOINPUT] = {
+        .text = "no input",
+        .color = "000000ff", // not specified in old config
+    },
+}
+
 
 /*
  * fetches the keylayout name
